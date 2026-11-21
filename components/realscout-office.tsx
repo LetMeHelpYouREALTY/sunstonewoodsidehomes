@@ -27,7 +27,21 @@ function ensureRealScoutScript() {
  */
 export function RealScoutOffice() {
   useEffect(() => {
-    ensureRealScoutScript()
+    const load = () => ensureRealScoutScript()
+    const w = window as Window &
+      typeof globalThis & {
+        requestIdleCallback?: (
+          cb: IdleRequestCallback,
+          opts?: IdleRequestOptions,
+        ) => number
+        cancelIdleCallback?: (id: number) => void
+      }
+    if (typeof w.requestIdleCallback === 'function') {
+      const id = w.requestIdleCallback(load, { timeout: 2500 })
+      return () => w.cancelIdleCallback?.(id)
+    }
+    const t = globalThis.setTimeout(load, 1200)
+    return () => globalThis.clearTimeout(t)
   }, [])
 
   return (
@@ -55,8 +69,13 @@ export function RealScoutOffice() {
 export function RealScoutAfterHero() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-10">
+      {/*
+        rootMargin must stay 0: a positive margin under a 100svh hero
+        intersects on first paint and pulls RealScout + CloudFront photos
+        onto the LCP critical path (mobile PSI unused-JS / image-delivery).
+      */}
       <DeferredRender
-        rootMargin="400px"
+        rootMargin="0px"
         fallback={
           <div
             className="min-h-[12rem] w-full"

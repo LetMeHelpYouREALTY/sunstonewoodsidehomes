@@ -107,15 +107,32 @@ export default function RootLayout({
           unused JS ~345 KiB, CloudFront listing photos ~665 KiB). Script
           mounts from RealScoutAfterHero once the carousel nears the viewport.
         */}
+        {/*
+          widgetbe: load only after first user gesture so it never contends
+          with LCP element-render-delay on mobile lab / mid-tier devices.
+        */}
         <Script id="widget-tracker" strategy="lazyOnload">
           {`
-            (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
-            {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
-            (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
-            e.parentNode.insertBefore(t,e);})
-            (window,"https://widgetbe.com/agent",document,"widgetTracker");
-            window.widgetTracker("create", "WT-XQHVYQWW");
-            window.widgetTracker("send", "pageview");
+            (function () {
+              var loaded = false;
+              function loadWidgetBe() {
+                if (loaded) return;
+                loaded = true;
+                window.removeEventListener('pointerdown', loadWidgetBe);
+                window.removeEventListener('keydown', loadWidgetBe);
+                window.removeEventListener('scroll', loadWidgetBe);
+                (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+                {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+                (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+                e.parentNode.insertBefore(t,e);})
+                (window,"https://widgetbe.com/agent",document,"widgetTracker");
+                window.widgetTracker("create", "WT-XQHVYQWW");
+                window.widgetTracker("send", "pageview");
+              }
+              window.addEventListener('pointerdown', loadWidgetBe, { once: true, passive: true });
+              window.addEventListener('keydown', loadWidgetBe, { once: true });
+              window.addEventListener('scroll', loadWidgetBe, { once: true, passive: true });
+            })();
           `}
         </Script>
       </head>

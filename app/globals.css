@@ -235,8 +235,9 @@
 }
 
 .hero-luxury-media {
-  transform: scale(1.04);
-  animation: hero-ken 18s ease-out forwards;
+  /* Start at scale(1) so LCP paints immediately; ken burns after paint. */
+  transform: scale(1);
+  animation: hero-ken 18s ease-out 1.25s forwards;
 }
 
 .hero-luxury-veil {
@@ -288,8 +289,11 @@
 }
 
 @keyframes hero-ken {
-  to {
+  from {
     transform: scale(1);
+  }
+  to {
+    transform: scale(1.04);
   }
 }
 

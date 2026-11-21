@@ -43,6 +43,7 @@ export function LuxuryHero({
         fill
         priority
         fetchPriority="high"
+        decoding="sync"
         quality={70}
         sizes="100vw"
         className="hero-luxury-media object-cover"
