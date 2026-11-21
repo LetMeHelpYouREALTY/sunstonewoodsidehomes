@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
   },
   
   async redirects() {
-    return ALIAS_HOSTS.flatMap((host) => [
+    const hostAliases = ALIAS_HOSTS.flatMap((host) => [
       {
         source: '/',
         has: [{ type: 'host' as const, value: host }],
@@ -30,6 +30,34 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
     ])
+
+    // Legacy paths still in GSC coverage → live indexable URLs (308/permanent).
+    const legacyPaths = [
+      { source: '/capella', destination: '/communities/capella' },
+      { source: '/capella-at-sunstone', destination: '/communities/capella' },
+      { source: '/listings', destination: '/move-in-ready' },
+      { source: '/homes', destination: '/move-in-ready' },
+      { source: '/properties', destination: '/move-in-ready' },
+      { source: '/search', destination: '/move-in-ready' },
+      { source: '/idx', destination: '/move-in-ready' },
+      { source: '/valuation', destination: '/sell' },
+      { source: '/home-valuation', destination: '/sell' },
+      { source: '/schedule', destination: '/touring' },
+      { source: '/book', destination: '/touring' },
+      { source: '/appointment', destination: '/touring' },
+      { source: '/open-houses', destination: '/touring' },
+      { source: '/blog', destination: '/market-report' },
+      { source: '/news', destination: '/market-report' },
+      { source: '/privacy', destination: '/contact' },
+      { source: '/privacy-policy', destination: '/contact' },
+      { source: '/terms', destination: '/contact' },
+      {
+        source: '/apple-touch-icon.png',
+        destination: '/apple-icon.png',
+      },
+    ].map((r) => ({ ...r, permanent: true }))
+
+    return [...hostAliases, ...legacyPaths]
   },
 
   // Performance headers

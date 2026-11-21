@@ -39,9 +39,10 @@ export const metadata: Metadata = {
     default: 'Sunstone Woodside Homes | Capella Las Vegas 89143',
     template: '%s',
   },
-  description: `${SITE_BRAND} — ${SITE_TAGLINE}. Capella at Sunstone single-story Woodside Homes in Las Vegas ZIP 89143.`,
+  description: `Sunstone Woodside Homes by Dr. Jan Duffy — Capella at Sunstone single-story Woodside Homes in Las Vegas ZIP 89143.`,
   keywords: [
     'Sunstone Woodside Homes',
+    'Sunstone Woodside Homes Las Vegas',
     'Capella at Sunstone',
     'Woodside Homes Las Vegas',
     'Sunstone Las Vegas 89143',
@@ -49,8 +50,8 @@ export const metadata: Metadata = {
     'Dr. Jan Duffy',
   ],
   openGraph: {
-    title: 'Sunstone Woodside Homes | Capella Las Vegas',
-    description: `${SITE_TAGLINE}. Capella at Sunstone and Sunstone master plan homes in ZIP 89143.`,
+    title: 'Sunstone Woodside Homes | Capella Las Vegas 89143',
+    description: `Sunstone Woodside Homes — Capella at Sunstone and Sunstone master plan homes in ZIP 89143.`,
     url: SITE_URL,
     siteName: SITE_LOGO,
     locale: 'en_US',
@@ -58,8 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sunstone Woodside Homes | Capella Las Vegas',
-    description: `${SITE_TAGLINE}. Capella at Sunstone, Las Vegas 89143.`,
+    title: 'Sunstone Woodside Homes | Capella Las Vegas 89143',
+    description: `Sunstone Woodside Homes — Capella at Sunstone, Las Vegas 89143.`,
   },
   robots: {
     index: true,

@@ -37,11 +37,10 @@ export const AGENT_PORTRAIT_MARK = '/images/about/dr-jan-duffy-mark.webp'
 export const SITE_URL = 'https://www.sunstonewoodsidehomes.com'
 
 /**
- * Google Search Console: primary property = SITE_URL (www.sunstonewoodsidehomes.com).
- * Prefer Domain property on sunstonewoodsidehomes.com (DNS TXT already live) or
- * URL-prefix on SITE_URL (meta + HTML file via lib/gsc.ts). Submit
- * `${SITE_URL}/sitemap.xml` after verify. Alias hosts 308 → SITE_URL
- * (next.config.ts) — do not submit separate sitemaps for aliases.
+ * Google Search Console — this property only:
+ *   Domain: sunstonewoodsidehomes.com or URL-prefix SITE_URL
+ *   Sitemap: `${SITE_URL}/sitemap.xml`
+ * Apex alias 308 → www. Separate from sunstonelasvegas.com.
  */
 export const ALIAS_HOSTS = [
   'sunstonewoodsidehomes.com',
@@ -50,10 +49,13 @@ export const ALIAS_HOSTS = [
 export const AREA_NAME = 'Capella at Sunstone'
 export const MASTER_PLAN = 'Sunstone'
 export const AREA_ZIP = '89143'
+/** Domain-brand keywords first — match GSC property sunstonewoodsidehomes.com */
 export const PRIMARY_KEYWORDS = [
   'Sunstone Woodside Homes',
+  'Sunstone Woodside Homes Las Vegas',
   'Capella at Sunstone',
   'Woodside Homes Las Vegas',
   'Sunstone Las Vegas 89143',
   'Capella Woodside Homes',
+  'Dr. Jan Duffy Sunstone',
 ] as const

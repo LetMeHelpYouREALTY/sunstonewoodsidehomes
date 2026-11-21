@@ -2,7 +2,7 @@
 
 Branch: `luxury-hyperlocal-sunstone`. Not merged. Not deployed to production.
 
-The canonical site is https://www.sunstonelasvegas.com. Apex `sunstonelasvegas.com` already returns 308 to www. The older production hosts redirect to that www URL from the app.
+The canonical site is https://www.sunstonewoodsidehomes.com. Apex `sunstonewoodsidehomes.com` returns 308 to www. Las Vegas (`sunstonelasvegas.com`) is a separate site and GSC property.
 
 Area: Capella at Sunstone, inside the Sunstone master plan, Las Vegas, Nevada, ZIP 89143.
 

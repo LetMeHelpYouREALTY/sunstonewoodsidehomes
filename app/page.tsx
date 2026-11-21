@@ -26,8 +26,8 @@ import {
   buildWebPage,
 } from '@/lib/structured-data'
 
-const homeTitle = 'Capella at Sunstone Homes | Woodside Las Vegas 89143'
-const homeDescription = `${capellaInventorySentence()} Single-story Woodside plans in the Sunstone master plan with Dr. Jan Duffy.`
+const homeTitle = 'Sunstone Woodside Homes | Capella Las Vegas 89143'
+const homeDescription = `Sunstone Woodside Homes — ${capellaInventorySentence()} Single-story Capella plans in the Sunstone master plan with Dr. Jan Duffy.`
 
 export const metadata = pageMeta({
   title: homeTitle,
