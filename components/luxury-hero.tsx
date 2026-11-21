@@ -42,6 +42,8 @@ export function LuxuryHero({
         alt={image.alt}
         fill
         priority
+        fetchPriority="high"
+        quality={70}
         sizes="100vw"
         className="hero-luxury-media object-cover"
       />

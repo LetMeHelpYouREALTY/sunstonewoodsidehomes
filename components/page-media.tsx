@@ -27,6 +27,8 @@ export function PageHeroImage({
           sizes="(min-width: 1152px) 1152px, 100vw"
           className="object-cover"
           priority={priority}
+          fetchPriority={priority ? 'high' : 'auto'}
+          quality={70}
         />
       </div>
       <figcaption className="source-line mt-2 px-4 sm:px-0">

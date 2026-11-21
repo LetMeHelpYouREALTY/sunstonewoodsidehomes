@@ -62,7 +62,8 @@ export function AgentMark({
         width={dim.px}
         height={dim.px}
         className={`${dim.className} rounded-full`}
-        priority={size === 'sm'}
+        // Never priority here — competes with LuxuryHero LCP fetchpriority=high.
+        loading="lazy"
       />
       {showLockup ? (
         <span className="grid leading-tight">

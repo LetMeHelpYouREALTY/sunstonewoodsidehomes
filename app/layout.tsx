@@ -102,12 +102,12 @@ export default function RootLayout({
           `}
         </Script>
         <JsonLd id="entity-graph-schema" data={entityGraphJsonLd} />
-        <Script
-          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-          type="module"
-          strategy="afterInteractive"
-        />
-        <Script id="widget-tracker" strategy="afterInteractive">
+        {/*
+          RealScout + widgetbe stay off the LCP critical path (mobile PSI:
+          unused JS ~345 KiB, CloudFront listing photos ~665 KiB). Script
+          mounts from RealScoutAfterHero once the carousel nears the viewport.
+        */}
+        <Script id="widget-tracker" strategy="lazyOnload">
           {`
             (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
             {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
