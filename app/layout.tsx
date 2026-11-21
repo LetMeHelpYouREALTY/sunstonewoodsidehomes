@@ -22,8 +22,10 @@ import './globals.css'
 const bodyFont = Manrope({
   subsets: ['latin'],
   variable: '--font-body',
-  weight: ['400', '500', '600'],
+  weight: ['400', '600'],
   display: 'swap',
+  // Let the LCP hero image win the first network slots on mobile.
+  preload: false,
 })
 
 const headingFont = Instrument_Serif({
@@ -31,6 +33,7 @@ const headingFont = Instrument_Serif({
   variable: '--font-heading',
   weight: '400',
   display: 'swap',
+  preload: false,
 })
 
 export const metadata: Metadata = {

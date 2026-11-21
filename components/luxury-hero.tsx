@@ -36,7 +36,19 @@ export function LuxuryHero({
   const image = pageImages[imageKey]
 
   return (
-    <section className="hero-luxury relative isolate min-h-[100svh] overflow-hidden text-[var(--hero-fg)]">
+    <section
+      className="hero-luxury relative isolate min-h-[100svh] overflow-hidden text-[var(--hero-fg)]"
+      // Inline critical box so the LCP <img> can paint before the 50KB CSS
+      // bundle arrives (mobile PSI element-render-delay was ~2s).
+      style={{
+        position: 'relative',
+        isolation: 'isolate',
+        minHeight: '100svh',
+        overflow: 'hidden',
+        backgroundColor: '#121816',
+        color: '#f3f2ef',
+      }}
+    >
       <Image
         src={image.src}
         alt={image.alt}
@@ -47,10 +59,24 @@ export function LuxuryHero({
         quality={70}
         sizes="100vw"
         className="hero-luxury-media object-cover"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        }}
       />
-      <div className="hero-luxury-veil absolute inset-0" aria-hidden />
+      <div
+        className="hero-luxury-veil absolute inset-0"
+        aria-hidden
+        style={{ position: 'absolute', inset: 0 }}
+      />
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-end px-4 pb-14 pt-28 sm:pb-20">
+      <div
+        className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-end px-4 pb-14 pt-28 sm:pb-20"
+        style={{ position: 'relative', zIndex: 10, minHeight: '100svh' }}
+      >
         <p className="hero-reveal hero-reveal-1 font-heading text-[clamp(2.75rem,8vw,5.5rem)] leading-[0.95] tracking-[-0.02em]">
           {SITE_BRAND}
         </p>

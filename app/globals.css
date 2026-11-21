@@ -235,9 +235,8 @@
 }
 
 .hero-luxury-media {
-  /* Start at scale(1) so LCP paints immediately; ken burns after paint. */
-  transform: scale(1);
-  animation: hero-ken 18s ease-out 1.25s forwards;
+  /* Keep the LCP image free of transform/animation (PSI element-render-delay). */
+  transform: none;
 }
 
 .hero-luxury-veil {
@@ -285,15 +284,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes hero-ken {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.04);
   }
 }
 
